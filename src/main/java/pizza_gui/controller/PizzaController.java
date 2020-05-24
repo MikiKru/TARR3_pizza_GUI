@@ -47,10 +47,13 @@ public class PizzaController {
     void clearAction(MouseEvent event) {
         System.out.println("CLEAR");
     }
-
     @FXML
     void ordrerAction(MouseEvent event) {
         System.out.println("ORDER");
+    }
+    @FXML
+    void selectPizzaAction(MouseEvent mouseEvent) {
+        pizzaService.addToBasket(tblPizza);
     }
     // konstruktor -> inicjalizacja GUI
     public void initialize(){
@@ -59,5 +62,6 @@ public class PizzaController {
         pizzaService.insertPizzasToTable(tblPizza, tcName, tcIngredients, tcType, tcPrice, pizzas);
         pizzaService.pizzaOfTheDayGenerator(pizzas, lblRandomPizza);
     }
+
 
 }

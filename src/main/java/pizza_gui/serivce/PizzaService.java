@@ -1,18 +1,14 @@
 package pizza_gui.serivce;
 
 import javafx.collections.ObservableList;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import pizza_gui.model.Ingredient;
 import pizza_gui.model.Pizza;
 import pizza_gui.model.PizzaModel;
 
 import java.text.NumberFormat;
-import java.util.Locale;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class PizzaService {
@@ -69,6 +65,21 @@ public class PizzaService {
         pizzas.get(randomIndex).setPrice(pizzas.get(randomIndex).getPrice() * 0.8);
         // wypisanie nazwy pizzy w Labelu
         randomPizza.setText(pizzaOfTheDay.getName() + " - " + pizzaOfTheDay.getPrice() + " zł");
+    }
+    private List<Integer> choices = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
+    // metoda do wybierania i przenoszenia pizzy do koszyka
+    public void addToBasket(TableView<PizzaModel> tblPizza){
+        // odczyt, który wiersz w tabelce został zaznaczony
+        PizzaModel selectedPizza = tblPizza.getSelectionModel().getSelectedItem();
+        // utworzenie okna kontekstowego do zamówienia wybranej ilości pizzy
+        ChoiceDialog<Integer> addToBasketDialog = new ChoiceDialog<>(1, choices);
+        addToBasketDialog.setTitle("Wybierz ilość");
+        addToBasketDialog.setHeaderText("Wybrałeś pizze " + selectedPizza.getName());
+        addToBasketDialog.setContentText("Wybierz ilość zamawianej pizzy: ");
+        // okno zostaje wyświetlone i utrzymane na ekranie i zwróci wartość po wciśnięciu przycisku
+        Optional<Integer> result = addToBasketDialog.showAndWait();
+        // gdy wybrano OK
+        result.ifPresent(quantity -> System.out.println("Pizza: "+ selectedPizza.getName() + " ilość: " + quantity));
     }
 
 }
