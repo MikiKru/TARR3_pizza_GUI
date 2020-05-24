@@ -79,8 +79,8 @@ public class PizzaService {
         // okno zostaje wyświetlone i utrzymane na ekranie i zwróci wartość po wciśnięciu przycisku
         Optional<Integer> result = addToBasketDialog.showAndWait();
         // gdy wybrano OK
-        result.ifPresent(quantity -> taBasket.setText(
-                String.format("%20s %2d szt. %5.2f zł",
+        result.ifPresent(quantity -> taBasket.appendText(
+                String.format("%-15s %5d szt. %10.2f zł\n",
                         selectedPizza.getName(),quantity, selectedPizza.getPrice() * quantity)));
     }
 
