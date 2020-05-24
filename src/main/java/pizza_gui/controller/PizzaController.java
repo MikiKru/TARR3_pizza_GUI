@@ -52,5 +52,12 @@ public class PizzaController {
     void ordrerAction(MouseEvent event) {
         System.out.println("ORDER");
     }
+    // konstruktor -> inicjalizacja GUI
+    public void initialize(){
+        // wywołanie metod zaimplementowanych w logice biznesowej aplikacji
+        pizzas = pizzaService.addPizzas(pizzas);
+        pizzaService.insertPizzasToTable(tblPizza, tcName, tcIngredients, tcType, tcPrice, pizzas);
+        pizzaService.pizzaOfTheDayGenerator(pizzas, lblRandomPizza);
+    }
 
 }
