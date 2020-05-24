@@ -3,7 +3,8 @@ package pizza_gui.model;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.company.pizza.model.Ingredient.*;
+import static pizza_gui.model.Ingredient.*;
+
 
 public enum Pizza {
     MARGHERITA("Marrgherita", THIN_CRUST, TOMATO_SUACE, CHEESE),
