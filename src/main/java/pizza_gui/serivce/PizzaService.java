@@ -64,7 +64,7 @@ public class PizzaService {
         // obniżenie ceny pizzy dania o 20%
         pizzas.get(randomIndex).setPrice(pizzas.get(randomIndex).getPrice() * 0.8);
         // wypisanie nazwy pizzy w Labelu
-        randomPizza.setText(pizzaOfTheDay.getName() + " - " + pizzaOfTheDay.getPrice() + " zł");
+        randomPizza.setText(String.format("%s - %.2f zł", pizzaOfTheDay.getName(),pizzaOfTheDay.getPrice()));
     }
     private List<Integer> choices = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
     // metoda do wybierania i przenoszenia pizzy do koszyka
