@@ -53,7 +53,7 @@ public class PizzaController {
     }
     @FXML
     void selectPizzaAction(MouseEvent mouseEvent) {
-        pizzaService.addToBasket(tblPizza);
+        pizzaService.addToBasket(tblPizza, taBasket);
     }
     // konstruktor -> inicjalizacja GUI
     public void initialize(){

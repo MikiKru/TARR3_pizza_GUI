@@ -68,7 +68,7 @@ public class PizzaService {
     }
     private List<Integer> choices = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
     // metoda do wybierania i przenoszenia pizzy do koszyka
-    public void addToBasket(TableView<PizzaModel> tblPizza){
+    public void addToBasket(TableView<PizzaModel> tblPizza, TextArea taBasket){
         // odczyt, który wiersz w tabelce został zaznaczony
         PizzaModel selectedPizza = tblPizza.getSelectionModel().getSelectedItem();
         // utworzenie okna kontekstowego do zamówienia wybranej ilości pizzy
@@ -79,7 +79,9 @@ public class PizzaService {
         // okno zostaje wyświetlone i utrzymane na ekranie i zwróci wartość po wciśnięciu przycisku
         Optional<Integer> result = addToBasketDialog.showAndWait();
         // gdy wybrano OK
-        result.ifPresent(quantity -> System.out.println("Pizza: "+ selectedPizza.getName() + " ilość: " + quantity));
+        result.ifPresent(quantity -> taBasket.setText(
+                String.format("%20s %2d szt. %5.2f zł",
+                        selectedPizza.getName(),quantity, selectedPizza.getPrice() * quantity)));
     }
 
 }
