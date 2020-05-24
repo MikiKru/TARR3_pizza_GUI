@@ -48,7 +48,7 @@ public class PizzaController {
 
     @FXML
     void clearAction(MouseEvent event) {
-        System.out.println("CLEAR");
+        pizzaService.clearOrder(taBasket, tfAddress, tfPhone, lblSum);
     }
     @FXML
     void ordrerAction(MouseEvent event) {

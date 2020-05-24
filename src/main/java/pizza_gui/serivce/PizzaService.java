@@ -83,8 +83,11 @@ public class PizzaService {
                 String.format("%-15s %5d szt. %10.2f zł\n",
                         selectedPizza.getName(),quantity, selectedPizza.getPrice() * quantity)));
     }
-    public void clearOrder(TextArea taBasket, TextField tfAddress, TextField tfPhone, ){
-
+    public void clearOrder(TextArea taBasket, TextField tfAddress, TextField tfPhone, Label lblSum){
+        taBasket.clear();
+        tfAddress.clear();
+        tfPhone.clear();
+        lblSum.setText("KWOTA DO ZAPŁATY: 0.00 ZŁ");
     }
 
 }
