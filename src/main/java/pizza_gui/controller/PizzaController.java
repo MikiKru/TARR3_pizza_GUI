@@ -19,11 +19,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class PizzaController {
+
     // Aby dodać kolekcję obiektów do kontrolek FXML korzystamy ObservableList
     private ObservableList<PizzaModel> pizzas = FXCollections.observableArrayList();
     // Obiekt klasy Pizza service
     private PizzaService pizzaService = new PizzaService();
 
+    @FXML
+    private Label lblSum;
     @FXML
     private TableView<PizzaModel> tblPizza;         // Klasa modelu
     @FXML
