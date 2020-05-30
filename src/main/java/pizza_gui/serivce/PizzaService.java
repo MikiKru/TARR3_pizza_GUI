@@ -92,6 +92,7 @@ public class PizzaService {
         taBasket.clear();
         tfAddress.clear();
         tfPhone.clear();
+        amount = 0;     // czyszczenie wartości globalnej
         lblSum.setText("KWOTA DO ZAPŁATY: 0.00 ZŁ");
     }
 
