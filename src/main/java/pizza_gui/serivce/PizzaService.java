@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.regex.Pattern;
@@ -142,6 +143,7 @@ public class PizzaService {
         }
     }
     public void saveDataToFile(TextField tfAddress, TextField tfPhone, TextArea taBasket) {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm");    // konfiguracja formatu wyświetlania daty
         try {
         FileChooser fileChooser = new FileChooser();
         // konfiguracja filtra rozszerzeń plików
@@ -153,12 +155,12 @@ public class PizzaService {
         printWriter = new PrintWriter(file);
         printWriter.println("POTWIERDZENIE ZAMÓWIENIA");
         LocalDateTime dateTime = LocalDateTime.now();
-        printWriter.println("Data i czas: " + dateTime); // data do sformatowania dd.mm.YYYY hh:mm
+        printWriter.println("Data i czas: " + dateTime.format(dtf)); // data do sformatowania dd.mm.YYYY hh:mm
         printWriter.println("Adres dostawy: " + tfAddress.getText());
         printWriter.println("Telefon kontaktowy: " + tfPhone.getText());
-        printWriter.println("Czas dostawy: " + dateTime.plusMinutes(45));
+        printWriter.println("Czas dostawy: " + dateTime.plusMinutes(45).format(dtf));
         printWriter.println("Produkty: \n" + taBasket.getText());
-        printWriter.println("Suma do zapłaty : " + amount + " zł");
+        printWriter.println(String.format("Suma do zapłaty : %.2f zł", amount));
         printWriter.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
