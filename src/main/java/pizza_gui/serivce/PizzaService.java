@@ -117,7 +117,7 @@ public class PizzaService {
             alert.setHeaderText("Potwierdzenie zamówienia");
             alert.setContentText("Twoje zamówienie: \n" + taBasket.getText() +"\nDo zapłaty: " + amount + " zł");
             alert.showAndWait();
-
+            saveDataToFile(tfAddress,tfPhone,taBasket);
             clearOrder(taBasket,tfAddress, tfPhone,lblSum); // czyści pola - koszyk, adres, telefon i sumę do zapłaty
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -141,14 +141,16 @@ public class PizzaService {
             alert.showAndWait();
         }
     }
-    public void saveDataToFile(TextField tfAddress, TextField tfPhone, TextArea taBasket) throws FileNotFoundException {
+    public void saveDataToFile(TextField tfAddress, TextField tfPhone, TextArea taBasket) {
+        try {
         FileChooser fileChooser = new FileChooser();
         // konfiguracja filtra rozszerzeń plików
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
                 "Plik tekstowy (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(null);
-        PrintWriter printWriter = new PrintWriter(file);
+        PrintWriter printWriter = null;
+        printWriter = new PrintWriter(file);
         printWriter.println("POTWIERDZENIE ZAMÓWIENIA");
         LocalDateTime dateTime = LocalDateTime.now();
         printWriter.println("Data i czas: " + dateTime);
@@ -158,7 +160,8 @@ public class PizzaService {
         printWriter.println("Produkty: \n" + taBasket.getText());
         printWriter.println("Suma do zapłaty : " + amount + " zł");
         printWriter.close();
-
-
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }
