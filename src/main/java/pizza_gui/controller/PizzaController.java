@@ -61,6 +61,7 @@ public class PizzaController {
     // konstruktor -> inicjalizacja GUI
     public void initialize(){
         pizzaService.clock(lblClock);
+        pizzaService.timeToExit(pgExit);
         // wywołanie metod zaimplementowanych w logice biznesowej aplikacji
         pizzas = pizzaService.addPizzas(pizzas);
         pizzaService.insertPizzasToTable(tblPizza, tcName, tcIngredients, tcType, tcPrice, pizzas);

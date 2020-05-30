@@ -200,7 +200,7 @@ public class PizzaService {
                     double progress = i / 100.0;
                     pgExit.setProgress(progress);
                 }
-                Platform.exit();        // automatyczne zamknięcie aplikacji
+                Platform.exit();        // automatyczn
             }
         });
         pgThread.start();
