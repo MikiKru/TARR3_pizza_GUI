@@ -153,7 +153,7 @@ public class PizzaService {
         printWriter = new PrintWriter(file);
         printWriter.println("POTWIERDZENIE ZAMÓWIENIA");
         LocalDateTime dateTime = LocalDateTime.now();
-        printWriter.println("Data i czas: " + dateTime);
+        printWriter.println("Data i czas: " + dateTime); // data do sformatowania dd.mm.YYYY hh:mm
         printWriter.println("Adres dostawy: " + tfAddress.getText());
         printWriter.println("Telefon kontaktowy: " + tfPhone.getText());
         printWriter.println("Czas dostawy: " + dateTime.plusMinutes(45));
