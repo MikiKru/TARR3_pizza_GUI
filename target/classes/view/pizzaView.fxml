@@ -56,7 +56,7 @@
                         <Font name="System Bold Italic" size="18.0" />
                      </font>
                   </Label>
-                  <ProgressBar fx:id="pgExit" layoutX="113.0" layoutY="235.0" prefHeight="27.0" prefWidth="421.0" progress="0.0" AnchorPane.leftAnchor="100.0" />
+                  <ProgressBar fx:id="pgExit" layoutX="99.0" layoutY="203.0" prefHeight="27.0" prefWidth="421.0" progress="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="210.0" />
                </children>
             </AnchorPane>
          </children>
