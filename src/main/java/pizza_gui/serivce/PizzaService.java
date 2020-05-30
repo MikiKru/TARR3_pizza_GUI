@@ -2,6 +2,7 @@ package pizza_gui.serivce;
 
 import javafx.application.Platform;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.FileChooser;
@@ -13,6 +14,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalUnit;
@@ -176,7 +178,9 @@ public class PizzaService {
                 while (true){                                        // pętla nieskończona
                     try {
                         String result = LocalDateTime.now().format(dateTimeFormatter);
-//                        lblClock.setText(result);
+                        Platform.runLater(() -> {
+                            lblClock.setText(result);
+                        });
                         Thread.currentThread().sleep(1000);     // uśpienie wątku clock thread na 1s
                     } catch (InterruptedException e) {
                         e.printStackTrace();
