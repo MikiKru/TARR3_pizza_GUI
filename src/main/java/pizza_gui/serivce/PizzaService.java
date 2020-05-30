@@ -123,8 +123,11 @@ public class PizzaService {
             if(!isAddressValid(tfAddress.getText())){
                 validationResult += "adres dostawy ";
             }
+            if(isPhoneValid(tfPhone.getText()) && isAddressValid(tfAddress.getText())){
+                validationResult = "";
+            }
             String emptyBasket = "";
-            if(!taBasket.getText().equals("")){
+            if(taBasket.getText().equals("")){
                 emptyBasket = "\nTwój koszyk z zamówieniami nie może być pusty.";
             }
             alert.setContentText(validationResult + emptyBasket);
