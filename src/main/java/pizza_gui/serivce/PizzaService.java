@@ -67,8 +67,10 @@ public class PizzaService {
         randomPizza.setText(String.format("%s - %.2f zł", pizzaOfTheDay.getName(),pizzaOfTheDay.getPrice()));
     }
     private List<Integer> choices = new ArrayList<>(Arrays.asList(1,2,3,4,5,6,7,8,9,10));
+    // obiekt przechowujący kwotę do zapłaty
+    private double amount;
     // metoda do wybierania i przenoszenia pizzy do koszyka
-    public void addToBasket(TableView<PizzaModel> tblPizza, TextArea taBasket){
+    public void addToBasket(TableView<PizzaModel> tblPizza, TextArea taBasket, Label lblSum){
         // odczyt, który wiersz w tabelce został zaznaczony
         PizzaModel selectedPizza = tblPizza.getSelectionModel().getSelectedItem();
         // utworzenie okna kontekstowego do zamówienia wybranej ilości pizzy
@@ -82,6 +84,9 @@ public class PizzaService {
         result.ifPresent(quantity -> taBasket.appendText(
                 String.format("%-15s %5d szt. %10.2f zł\n",
                         selectedPizza.getName(),quantity, selectedPizza.getPrice() * quantity)));
+        // gdy wybrano OK
+        result.ifPresent(quantity -> amount = amount + (quantity * selectedPizza.getPrice()));
+        lblSum.setText(String.format("KWOTA DO ZAPŁATY: %.2f ZŁ", amount));
     }
     public void clearOrder(TextArea taBasket, TextField tfAddress, TextField tfPhone, Label lblSum){
         taBasket.clear();
