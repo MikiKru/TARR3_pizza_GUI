@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -50,6 +51,12 @@
                         <Font name="System Bold Italic" size="48.0" />
                      </font>
                   </Label>
+                  <Label fx:id="lblClock" layoutX="102.0" layoutY="35.0" text="clock" AnchorPane.leftAnchor="100.0">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <ProgressBar fx:id="pgExit" layoutX="99.0" layoutY="203.0" prefHeight="27.0" prefWidth="421.0" progress="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.topAnchor="210.0" />
                </children>
             </AnchorPane>
          </children>

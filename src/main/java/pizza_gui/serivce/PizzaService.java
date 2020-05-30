@@ -166,4 +166,23 @@ public class PizzaService {
             e.printStackTrace();
         }
     }
+    public void clock(Label lblClock){
+        // --------------- IMPLEMENTCJA ------------------------
+        Thread clockThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+                while (true){                                        // pętla nieskończona
+                    try {
+                        lblClock.setText(LocalDateTime.now().format(dateTimeFormatter));
+                        Thread.currentThread().sleep(1000);     // uśpienie wątku clock thread na 1s
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+        // ------------------------------------------------------
+        clockThread.start();        // uruchomienie wątku clock thread -> wywołanie metody run() wykonywanej przez inny procesor
+    }
 }
