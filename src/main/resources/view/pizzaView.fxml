@@ -15,7 +15,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" style="-fx-background-color: #bba4fc;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pizza_gui.controller.PizzaController">
    <children>
       <VBox prefHeight="1080.0" prefWidth="1949.0" spacing="30.0">
@@ -79,20 +78,20 @@
                   <Font name="System Bold" size="36.0" />
                </font>
             </Label>
-            <TextField fx:id="tfAddress" promptText="WPROWADŹ ADRES DOSTAWY">
+            <TextField fx:id="tfAddress" promptText="WPROWADŹ ADRES DOSTAWY [ulica, kod pocztowy miasto]">
                <VBox.margin>
                   <Insets left="150.0" right="150.0" />
                </VBox.margin>
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="tfPhone" promptText="WPROWADŹ NUMER TELEFONU">
+            <TextField fx:id="tfPhone" promptText="WPROWADŹ NUMER TELEFONU [XXX-XXX-XXX]">
                <VBox.margin>
                   <Insets left="150.0" right="150.0" />
                </VBox.margin>
                <font>
-                  <Font size="24.0" />
+                  <Font size="18.0" />
                </font>
             </TextField>
             <HBox prefHeight="54.0" prefWidth="659.0">
