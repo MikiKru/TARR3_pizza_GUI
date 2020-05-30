@@ -99,7 +99,7 @@
                   <Insets left="150.0" right="150.0" />
                </VBox.margin>
                <children>
-                  <Button mnemonicParsing="false" onMouseClicked="#ordrerAction" prefHeight="26.0" prefWidth="710.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="ZAMÓW">
+                  <Button mnemonicParsing="false" onMouseClicked="#orderAction" prefHeight="26.0" prefWidth="710.0" style="-fx-background-color: lightgreen; -fx-border-color: black;" text="ZAMÓW">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

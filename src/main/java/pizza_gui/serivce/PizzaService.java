@@ -103,4 +103,33 @@ public class PizzaService {
         return Pattern.matches("^[au][l][\\.]\\s{0,1}[A-Za-złąęśćźżóń\\d\\.\\s]{1,}\\s{1}\\d{1,}[A-Za-z]{0,}[\\/]{0,1}\\d{0,}[,]\\s{0,1}\\d{2}[-]\\d{3}\\s{1}[A-Za-złąęśćźżóń\\s\\-]{2,}$",
                 address);
     }
+    // okno dialogowe typu information lub error potwierdzające lub odrzucające zamówienie
+    public void getOrder(TextField tfPhone, TextField tfAddress, TextArea taBasket, Label lblSum){
+        if(isPhoneValid(tfPhone.getText()) && isAddressValid(tfAddress.getText()) && !taBasket.getText().equals("")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Zamówienie");
+            alert.setHeaderText("Potwierdzenie zamówienia");
+            alert.setContentText("Twoje zamówienie: \n" + taBasket.getText() +"\nDo zapłaty: " + amount + " zł");
+            alert.showAndWait();
+            clearOrder(taBasket,tfAddress, tfPhone,lblSum); // czyści pola - koszyk, adres, telefon i sumę do zapłaty
+        } else {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Zamówienie");
+            alert.setHeaderText("Błędne dane zamówienia");
+            String validationResult = "Wprowadziłeś niepoprawne dane w następujących polach: ";
+            if(!isPhoneValid(tfPhone.getText())){
+                validationResult += "telefon ";
+            }
+            if(!isAddressValid(tfAddress.getText())){
+                validationResult += "adres dostawy ";
+            }
+            String emptyBasket = "";
+            if(!taBasket.getText().equals("")){
+                emptyBasket = "\nTwój koszyk z zamówieniami nie może być pusty.";
+            }
+            alert.setContentText(validationResult + emptyBasket);
+            alert.showAndWait();
+        }
+
+    }
 }

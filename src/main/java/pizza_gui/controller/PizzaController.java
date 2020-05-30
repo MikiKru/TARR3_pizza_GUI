@@ -51,7 +51,7 @@ public class PizzaController {
         pizzaService.clearOrder(taBasket, tfAddress, tfPhone, lblSum);
     }
     @FXML
-    void ordrerAction(MouseEvent event) {
+    void orderAction(MouseEvent event) {
         System.out.println("Phone regex: " + pizzaService.isPhoneValid(tfPhone.getText()));
         System.out.println("Address regex: " + pizzaService.isAddressValid(tfAddress.getText()));
     }
