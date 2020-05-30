@@ -3,11 +3,17 @@ package pizza_gui.serivce;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
 import pizza_gui.model.Ingredient;
 import pizza_gui.model.Pizza;
 import pizza_gui.model.PizzaModel;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.text.NumberFormat;
+import java.time.LocalDateTime;
+import java.time.temporal.TemporalUnit;
 import java.util.*;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -111,6 +117,7 @@ public class PizzaService {
             alert.setHeaderText("Potwierdzenie zamówienia");
             alert.setContentText("Twoje zamówienie: \n" + taBasket.getText() +"\nDo zapłaty: " + amount + " zł");
             alert.showAndWait();
+
             clearOrder(taBasket,tfAddress, tfPhone,lblSum); // czyści pola - koszyk, adres, telefon i sumę do zapłaty
         } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -133,6 +140,25 @@ public class PizzaService {
             alert.setContentText(validationResult + emptyBasket);
             alert.showAndWait();
         }
+    }
+    public void saveDataToFile(TextField tfAddress, TextField tfPhone, TextArea taBasket) throws FileNotFoundException {
+        FileChooser fileChooser = new FileChooser();
+        // konfiguracja filtra rozszerzeń plików
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter(
+                "Plik tekstowy (*.txt)", "*.txt");
+        fileChooser.getExtensionFilters().add(extFilter);
+        File file = fileChooser.showSaveDialog(null);
+        PrintWriter printWriter = new PrintWriter(file);
+        printWriter.println("POTWIERDZENIE ZAMÓWIENIA");
+        LocalDateTime dateTime = LocalDateTime.now();
+        printWriter.println("Data i czas: " + dateTime);
+        printWriter.println("Adres dostawy: " + tfAddress.getText());
+        printWriter.println("Telefon kontaktowy: " + tfPhone.getText());
+        printWriter.println("Czas dostawy: " + dateTime.plusMinutes(45));
+        printWriter.println("Produkty: \n" + taBasket.getText());
+        printWriter.println("Suma do zapłaty : " + amount + " zł");
+        printWriter.close();
+
 
     }
 }
